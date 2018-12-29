@@ -1,0 +1,18 @@
+[user]
+	name = ramonsantos
+	email = ramonsantos.pe@gmail.com
+[core]
+	editor = vim
+[color]
+	branch = auto
+	status = auto
+	diff = auto
+	ui = auto
+[diff]
+	renamelimit = 0
+[alias]
+	s = status
+	l = log
+	d = diff
+	c = checkout
+	b = branch
