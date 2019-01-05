@@ -110,6 +110,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+dnfu="sudo dnf update"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
