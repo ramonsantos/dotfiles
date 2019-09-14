@@ -2,6 +2,19 @@ AllCops:
   Exclude:
     - bin/*
 
+Layout/AlignHash:
+  Description: >-
+                 Align the elements of a hash literal if they span more than
+                 one line.
+  Enabled: true
+  AllowMultipleStyles: true
+  EnforcedHashRocketStyle:
+    - key
+    - table
+  EnforcedColonStyle:
+    - key
+    - table
+
 Metrics/AbcSize:
   Description: >-
                  A calculated magnitude based on number of assignments,
@@ -74,12 +87,6 @@ Style/RaiseArgs:
 
 Style/RescueStandardError:
   Description: 'Avoid rescuing without specifying an error class.'
-  Enabled: false
-
-Style/FrozenStringLiteralComment:
-  Description: >-
-                 Add the frozen_string_literal comment to the top of files
-                 to help transition from Ruby 2.3.0 to Ruby 3.0.
   Enabled: false
 
 Style/SymbolArray:
