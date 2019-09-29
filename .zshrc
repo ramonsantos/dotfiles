@@ -19,6 +19,7 @@ plugins=(
 )
 
 # Aliases
+alias code="codium"
 alias dnfu="sudo dnf update"
 
 # Configurations
@@ -28,6 +29,7 @@ source $ZSH/oh-my-zsh.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
