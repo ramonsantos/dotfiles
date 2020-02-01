@@ -15,3 +15,12 @@ Reboot the system and run step 2:
 chmod +x setup_fedora_2.sh
 sudo -E ./setup_fedora_2.sh
 ```
+
+### Setup Zsh
+
+Run:
+
+```bash
+chmod +x config_zsh.sh
+sudo -E ./config_zsh.sh
+```
