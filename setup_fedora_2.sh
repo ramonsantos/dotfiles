@@ -17,8 +17,13 @@ function config_git() {
   cp .gitconfig $HOME
 }
 
+function setup_services_by_docker() {
+  docker-compose up -d
+}
+
 # Main
 install_app_by_snap
 install_node_packages
 install_python_packages
 config_git
+setup_services_by_docker
