@@ -11,4 +11,3 @@ defmodule IExHelpers do
   def type(term) when is_tuple(term), do: "Type: Tuple"
   def type(_term), do: "Type: Unknown"
 end
-

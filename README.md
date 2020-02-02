@@ -33,3 +33,12 @@ Run:
 chmod +x install_ruby.sh
 sudo -E ./install_ruby.sh
 ```
+
+### Install Elixir
+
+Run:
+
+```bash
+chmod +x install_elixir.sh
+sudo -E ./install_elixir.sh
+```

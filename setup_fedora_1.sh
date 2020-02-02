@@ -1,6 +1,7 @@
 USER=ramonsantos
 HOME=/home/ramonsantos
 DROPBOX_DOWNLOAD_LINK="https://www.dropbox.com/download?dl=packages/fedora/nautilus-dropbox-2019.02.14-1.fedora.x86_64.rpm"
+ASDF_VERSION=v0.7.6
 
 declare -a PACKAGES_TO_INSTALL=(
   # System Utilities
@@ -45,6 +46,8 @@ declare -a PACKAGES_TO_INSTALL=(
   "graphviz"
   "zlib"
   "zlib-devel"
+  "libxslt"
+  "libxslt-devel"
   "gcc-c++"
   "patch"
   "readline"
@@ -59,6 +62,7 @@ declare -a PACKAGES_TO_INSTALL=(
   "libtool"
   "bison"
   "curl"
+  "unixODBC-devel"
 
   # Codium
   "codium"
@@ -145,6 +149,10 @@ function install_oh_my_zsh() {
   chsh -s $(which zsh) $USER
 }
 
+function install_asdf() {
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch $ASDF_VERSION
+}
+
 # Main
 add_repositories
 update_repositories
@@ -156,4 +164,4 @@ install_dropbox
 install_atom
 config_language
 install_oh_my_zsh
-
+install_asdf
