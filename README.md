@@ -1,5 +1,7 @@
 # Dotfiles
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 ## Setup Fedora and Install Apps
 
 Run step 1:
