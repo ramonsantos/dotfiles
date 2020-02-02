@@ -24,3 +24,12 @@ Run:
 chmod +x config_zsh.sh
 sudo -E ./config_zsh.sh
 ```
+
+### Install Ruby
+
+Run:
+
+```bash
+chmod +x install_ruby.sh
+sudo -E ./install_ruby.sh
+```
