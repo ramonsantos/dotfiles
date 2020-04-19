@@ -1,17 +1,14 @@
-RUBY_VERSION=2.6.5
+RUBY_VERSION=2.6.6
 
 declare -a GEMS_TO_INSTALL=(
   "awesome_print"
   "bundler"
   "pry"
-  "rails"
-  "rails_best_practices"
   "rubocop"
   "rubocop-performance"
   "rubocop-rails"
   "rubocop-rspec"
   "rubycritic"
-  "scss_lint"
 )
 
 function install_rbenv() {
