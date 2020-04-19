@@ -13,6 +13,7 @@ declare -a PACKAGES_TO_INSTALL=(
   "p7zip-plugins"
   "xclip"
   "snapd"
+  "util-linux-user"
 
   # Multimedia Applications
   "vlc"
@@ -63,6 +64,7 @@ declare -a PACKAGES_TO_INSTALL=(
   "bison"
   "curl"
   "unixODBC-devel"
+  "redhat-rpm-config"
 
   # Codium
   "codium"
@@ -90,8 +92,8 @@ function add_repositories() {
   sudo dnf install --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
   sudo dnf config-manager --add-repo=http://negativo17.org/repos/fedora-spotify.repo -y
   sudo dnf config-manager --add-repo=http://negativo17.org/repos/fedora-steam.repo -y
-  rpm --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg -y
-  printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=gitlab.com_paulcarroty_vscodium_repo\nbaseurl=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg" |sudo tee -a /etc/yum.repos.d/vscodium.repo
+  sudo rpm --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg -y
+  printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=gitlab.com_paulcarroty_vscodium_repo\nbaseurl=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg" |sudo tee -a /etc/yum.repos.d/vscodium.repo -y
   curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
 }
 
