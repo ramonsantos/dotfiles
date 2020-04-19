@@ -1,7 +1,7 @@
 USER=ramonsantos
 HOME=/home/ramonsantos
-DROPBOX_DOWNLOAD_LINK="https://www.dropbox.com/download?dl=packages/fedora/nautilus-dropbox-2019.02.14-1.fedora.x86_64.rpm"
-ASDF_VERSION=v0.7.6
+DROPBOX_DOWNLOAD_LINK="https://www.dropbox.com/download?dl=packages/fedora/nautilus-dropbox-2020.03.04-1.fedora.x86_64.rpm"
+ASDF_VERSION=v0.7.8
 
 declare -a PACKAGES_TO_INSTALL=(
   # System Utilities
@@ -13,7 +13,6 @@ declare -a PACKAGES_TO_INSTALL=(
   "p7zip-plugins"
   "xclip"
   "snapd"
-  "util-linux-user"
 
   # Multimedia Applications
   "vlc"
@@ -64,7 +63,6 @@ declare -a PACKAGES_TO_INSTALL=(
   "bison"
   "curl"
   "unixODBC-devel"
-  "redhat-rpm-config"
 
   # Codium
   "codium"
@@ -89,11 +87,11 @@ declare -a PACKAGES_TO_INSTALL=(
 )
 
 function add_repositories() {
+  sudo rpm --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
+  printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=gitlab.com_paulcarroty_vscodium_repo\nbaseurl=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg" |sudo tee -a /etc/yum.repos.d/vscodium.repo
   sudo dnf install --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
   sudo dnf config-manager --add-repo=http://negativo17.org/repos/fedora-spotify.repo -y
   sudo dnf config-manager --add-repo=http://negativo17.org/repos/fedora-steam.repo -y
-  sudo rpm --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg -y
-  printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=gitlab.com_paulcarroty_vscodium_repo\nbaseurl=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg" |sudo tee -a /etc/yum.repos.d/vscodium.repo
   curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
 }
 
@@ -126,7 +124,7 @@ function setup_docker() {
   sudo systemctl start docker
   sudo systemctl enable docker
   sudo groupadd docker && sudo gpasswd -a $USER docker && sudo systemctl restart docker
-  sudo curl -L "https://github.com/docker/compose/releases/download/1.25.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
   sudo chmod +x /usr/local/bin/docker-compose
 }
 
