@@ -13,6 +13,7 @@ declare -a PACKAGES_TO_INSTALL=(
   "p7zip-plugins"
   "xclip"
   "snapd"
+  "util-linux-user"
 
   # Multimedia Applications
   "vlc"
@@ -63,6 +64,7 @@ declare -a PACKAGES_TO_INSTALL=(
   "bison"
   "curl"
   "unixODBC-devel"
+  "redhat-rpm-config"
 
   # Codium
   "codium"
@@ -96,7 +98,7 @@ function add_repositories() {
 }
 
 function update_repositories() {
-  sudo dnf makecache && sudo dnf check-update
+  sudo dnf makecache -y && sudo dnf check-update
 }
 
 function update_system() {
@@ -147,6 +149,7 @@ function install_oh_my_zsh() {
   chmod +x install.sh
   RUNZSH=no CHSH=yes ./install.sh
   chsh -s $(which zsh) $USER
+  rm install.sh
 }
 
 function install_asdf() {
