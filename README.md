@@ -21,7 +21,7 @@ sudo -E ./setup_fedora_2.sh
 Run:
 
 ```bash
-sudo -E ./config_zsh.sh
+./config_zsh.sh
 ```
 
 ### Install Ruby
@@ -29,7 +29,7 @@ sudo -E ./config_zsh.sh
 Run:
 
 ```bash
-sudo -E ./install_ruby.sh
+./install_ruby.sh
 ```
 
 ### Install Elixir
@@ -37,5 +37,5 @@ sudo -E ./install_ruby.sh
 Run:
 
 ```bash
-sudo -E ./install_elixir.sh
+./install_elixir.sh
 ```
