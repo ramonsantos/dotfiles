@@ -14,6 +14,7 @@ declare -a PACKAGES_TO_INSTALL=(
   "xclip"
   "snapd"
   "util-linux-user"
+  "grubby"
 
   # Multimedia Applications
   "vlc"
@@ -118,16 +119,12 @@ function install_packages() {
   $INSTALL
 }
 
-function setup_snap() {
-  sudo ln -s /var/lib/snapd/snap /snap
+function config_kernel() {
+  sudo grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy=0" --make-default
 }
 
-function setup_docker() {
-  sudo systemctl start docker
-  sudo systemctl enable docker
-  sudo groupadd docker && sudo gpasswd -a $USER docker && sudo systemctl restart docker
-  sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-  sudo chmod +x /usr/local/bin/docker-compose
+function setup_snap() {
+  sudo ln -s /var/lib/snapd/snap /snap
 }
 
 function install_dropbox() {
@@ -161,8 +158,8 @@ add_repositories
 update_repositories
 update_system
 install_packages
+config_kernel
 setup_snap
-setup_docker
 install_dropbox
 install_atom
 config_language
