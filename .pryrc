@@ -1,4 +1,4 @@
-require 'awesome_print'
+require 'amazing_print'
 
 if defined?(PryByebug)
   Pry.commands.alias_command 'c', 'continue'
@@ -9,4 +9,4 @@ if defined?(PryByebug)
   Pry.commands.alias_command 'd', 'down'
 end
 
-AwesomePrint.pry!
+AmazingPrint.pry!
