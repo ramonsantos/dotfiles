@@ -19,7 +19,6 @@ plugins=(
 )
 
 # Aliases
-alias code="codium"
 alias dnfu="sudo dnf update"
 
 # Configurations

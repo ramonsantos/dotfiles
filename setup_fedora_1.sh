@@ -1,7 +1,7 @@
 USER=ramonsantos
 HOME=/home/ramonsantos
 DROPBOX_DOWNLOAD_LINK="https://www.dropbox.com/download?dl=packages/fedora/nautilus-dropbox-2020.03.04-1.fedora.x86_64.rpm"
-ASDF_VERSION=v0.7.8
+ASDF_VERSION=v0.8.0
 
 declare -a PACKAGES_TO_INSTALL=(
   # System Utilities
@@ -67,8 +67,8 @@ declare -a PACKAGES_TO_INSTALL=(
   "unixODBC-devel"
   "redhat-rpm-config"
 
-  # Codium
-  "codium"
+  # VS Code
+  "code"
   # Git
   "git-core gitg"
   # Vim
@@ -90,12 +90,12 @@ declare -a PACKAGES_TO_INSTALL=(
 )
 
 function add_repositories() {
-  sudo rpm --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
-  printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=gitlab.com_paulcarroty_vscodium_repo\nbaseurl=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg" |sudo tee -a /etc/yum.repos.d/vscodium.repo
   sudo dnf install --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
   sudo dnf config-manager --add-repo=http://negativo17.org/repos/fedora-spotify.repo -y
   sudo dnf config-manager --add-repo=http://negativo17.org/repos/fedora-steam.repo -y
   curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+  sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+  sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 }
 
 function update_repositories() {
@@ -153,6 +153,29 @@ function install_asdf() {
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch $ASDF_VERSION
 }
 
+function install_postman() {
+  wget https://dl.pstmn.io/download/latest/linux64
+  sudo mv linux64 /opt
+  cd /opt
+  sudo tar xzvf linux64
+  sudo rm linux64
+  sudo ln -s /opt/Postman/Postman /usr/local/bin/postman
+
+  cat > ~/.local/share/applications/postman.desktop <<EOT
+[Desktop Entry]
+Name=Postman
+GenericName=API Client
+X-GNOME-FullName=Postman API Client
+Comment=Make and view REST API calls and responses
+Keywords=api;
+Exec=/usr/local/bin/postman
+Terminal=false
+Type=Application
+Icon=/opt/Postman/app/resources/app/assets/icon.png
+Categories=Development;Utilities;
+EOT
+}
+
 # Main
 add_repositories
 update_repositories
@@ -165,3 +188,4 @@ install_atom
 config_language
 install_oh_my_zsh
 install_asdf
+install_postman
