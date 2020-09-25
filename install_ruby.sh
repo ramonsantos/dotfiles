@@ -1,14 +1,13 @@
-RUBY_VERSION=2.6.6
+RUBY_VERSION=2.7.1
 
 declare -a GEMS_TO_INSTALL=(
-  "awesome_print"
+  "amazing_print"
   "bundler"
   "pry"
   "rubocop"
   "rubocop-performance"
   "rubocop-rails"
   "rubocop-rspec"
-  "rubycritic"
 )
 
 function install_rbenv() {

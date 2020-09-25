@@ -24,14 +24,6 @@ Run:
 ./config_zsh.sh
 ```
 
-### Setup Docker
-
-Run:
-
-```bash
-./config_docker.sh
-```
-
 ### Install Ruby
 
 Run:
@@ -46,4 +38,12 @@ Run:
 
 ```bash
 ./install_elixir.sh
+```
+
+### Setup Docker
+
+Run:
+
+```bash
+./config_docker.sh
 ```

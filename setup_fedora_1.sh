@@ -1,7 +1,6 @@
 USER=ramonsantos
 HOME=/home/ramonsantos
 DROPBOX_DOWNLOAD_LINK="https://www.dropbox.com/download?dl=packages/fedora/nautilus-dropbox-2020.03.04-1.fedora.x86_64.rpm"
-ASDF_VERSION=v0.8.0
 
 declare -a PACKAGES_TO_INSTALL=(
   # System Utilities
@@ -15,6 +14,7 @@ declare -a PACKAGES_TO_INSTALL=(
   "snapd"
   "util-linux-user"
   "grubby"
+  "dnf-plugins-core"
 
   # Multimedia Applications
   "vlc"
@@ -23,7 +23,6 @@ declare -a PACKAGES_TO_INSTALL=(
   "easytag"
   "tagtool"
   "simplescreenrecorder"
-  "spotify-client"
   "youtube-dl"
 
   # Internet Applications
@@ -41,7 +40,6 @@ declare -a PACKAGES_TO_INSTALL=(
 
   # Games
   "gnome-mines"
-  "steam"
 
   # Development Utilities
   "ImageMagick"
@@ -91,8 +89,6 @@ declare -a PACKAGES_TO_INSTALL=(
 
 function add_repositories() {
   sudo dnf install --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
-  sudo dnf config-manager --add-repo=http://negativo17.org/repos/fedora-spotify.repo -y
-  sudo dnf config-manager --add-repo=http://negativo17.org/repos/fedora-steam.repo -y
   curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
   sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
   sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
@@ -127,11 +123,6 @@ function setup_snap() {
   sudo ln -s /var/lib/snapd/snap /snap
 }
 
-function install_dropbox() {
-  wget $DROPBOX_DOWNLOAD_LINK
-  sudo dnf localinstall *nautilus-dropbox*.rpm -y
-}
-
 function install_atom() {
   wget https://atom.io/download/rpm -O atom.rpm
   sudo dnf localinstall atom.rpm -y
@@ -139,18 +130,6 @@ function install_atom() {
 
 function config_language() {
   sudo dnf install system-config-language -y
-}
-
-function install_oh_my_zsh() {
-  wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
-  chmod +x install.sh
-  RUNZSH=no CHSH=yes ./install.sh
-  chsh -s $(which zsh) $USER
-  rm install.sh
-}
-
-function install_asdf() {
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch $ASDF_VERSION
 }
 
 function install_postman() {
@@ -176,6 +155,11 @@ Categories=Development;Utilities;
 EOT
 }
 
+function install_dropbox() {
+  wget $DROPBOX_DOWNLOAD_LINK
+  sudo dnf localinstall *nautilus-dropbox*.rpm -y
+}
+
 # Main
 add_repositories
 update_repositories
@@ -183,9 +167,10 @@ update_system
 install_packages
 config_kernel
 setup_snap
-install_dropbox
 install_atom
 config_language
-install_oh_my_zsh
-install_asdf
 install_postman
+install_dropbox
+
+
+
