@@ -64,6 +64,18 @@ declare -a PACKAGES_TO_INSTALL=(
   "curl"
   "unixODBC-devel"
   "redhat-rpm-config"
+  "ncurses-devel"
+  "systemtap"
+  "diffstat"
+  "doxygen"
+  "patchutils"
+  "java-1.8.0-openjdk-devel"
+  "wxGTK3-devel"
+  "wxBase3"
+  "libiodbc"
+  "unixODBC.x86_64"
+  "erlang-odbc.x86_64"
+
 
   # VS Code
   "code"
@@ -155,6 +167,10 @@ Categories=Development;Utilities;
 EOT
 }
 
+function install_node_packages() {
+  sudo npm install --global webpack
+}
+
 function install_dropbox() {
   wget $DROPBOX_DOWNLOAD_LINK
   sudo dnf localinstall *nautilus-dropbox*.rpm -y
@@ -170,7 +186,5 @@ setup_snap
 install_atom
 config_language
 install_postman
+install_node_packages
 install_dropbox
-
-
-

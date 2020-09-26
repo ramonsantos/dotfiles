@@ -1,3 +1,5 @@
+ASDF_VERSION=v0.8.0
+
 wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
 chmod +x install.sh
 RUNZSH=no CHSH=yes ./install.sh
@@ -7,6 +9,11 @@ rm install.sh
 ZSH_CUSTOM=/home/$USER/.oh-my-zsh/custom
 
 cp .zshrc $HOME
+cp .gitconfig $HOME
+cp .iex.exs $HOME
+cp .pryrc $HOME
+cp .rubocop.yml $HOME
+cp .tool-versions $HOME
 
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
@@ -16,4 +23,5 @@ mkdir ~/.fonts && unzip resource/Hack.zip -d ~/.fonts
 
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
-zsh
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch $ASDF_VERSION
+
