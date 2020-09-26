@@ -18,12 +18,8 @@ Run:
 ./config_zsh.sh
 ```
 
-### Reboot System
-
-Run:
-
 ```bash
-reboot
+zsh
 ```
 
 ### Install Ruby
@@ -42,6 +38,14 @@ Run:
 ./install_elixir.sh
 ```
 
+### Reboot System
+
+Run:
+
+```bash
+reboot
+```
+
 ### Install Snap Packages
 
 Run:
@@ -55,5 +59,5 @@ Run:
 Run:
 
 ```bash
-./config_docker.sh
+sudo ./config_docker.sh
 ```

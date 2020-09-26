@@ -1,3 +1,5 @@
+echo -e "\e[1;35m Configuring Zsh... \e[0mww\n"
+
 ASDF_VERSION=v0.8.0
 
 wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh

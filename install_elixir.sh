@@ -1,3 +1,5 @@
+echo -e "\e[1;35m Installing Elixir... \e[0mww\n"
+
 ERLANG_VERSION=22.2.4
 ELIXIR_VERSION=1.10.0-otp-22
 

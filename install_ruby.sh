@@ -1,3 +1,5 @@
+echo -e "\e[1;35m Installing Ruby... \e[0mww\n"
+
 RUBY_VERSION=2.7.1
 
 declare -a GEMS_TO_INSTALL=(
