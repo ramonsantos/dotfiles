@@ -15,6 +15,7 @@ declare -a PACKAGES_TO_INSTALL=(
   "util-linux-user"
   "grubby"
   "dnf-plugins-core"
+  "bluez bluez-tools rfkill"
 
   # Multimedia Applications
   "vlc"
@@ -48,6 +49,7 @@ declare -a PACKAGES_TO_INSTALL=(
   "zlib-devel"
   "libxslt"
   "libxslt-devel"
+  "fop"
   "gcc-c++"
   "patch"
   "readline"
@@ -118,6 +120,10 @@ function update_system() {
   echo -e "\e[1;35m Updating System... \e[0mww\n"
 
   sudo dnf update -y
+}
+
+function install_package_groups() {
+  sudo dnf groupinstall -y 'Development Tools' 'C Development Tools and Libraries'
 }
 
 function install_packages() {
@@ -202,6 +208,7 @@ function install_dropbox() {
 add_repositories
 update_repositories
 update_system
+install_package_groups
 install_packages
 config_kernel
 setup_snap
