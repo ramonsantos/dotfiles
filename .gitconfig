@@ -16,3 +16,5 @@
 	d = diff
 	c = checkout
 	b = branch
+[init]
+	defaultBranch = main

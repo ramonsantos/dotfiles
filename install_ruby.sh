@@ -1,6 +1,6 @@
-echo -e "\e[1;35m Installing Ruby... \e[0mww\n"
+echo -e "\e[1;35m Installing Ruby... \e[0m\n"
 
-RUBY_VERSION=2.7.1
+RUBY_VERSION=3.1.0
 
 declare -a GEMS_TO_INSTALL=(
   "amazing_print"
@@ -10,6 +10,7 @@ declare -a GEMS_TO_INSTALL=(
   "rubocop-performance"
   "rubocop-rails"
   "rubocop-rspec"
+  "solargraph"
 )
 
 function install_rbenv() {
@@ -28,7 +29,6 @@ function build_default_gems() {
 function install_ruby() {
   rbenv install $RUBY_VERSION
   rbenv global $RUBY_VERSION
-  ruby -v
 }
 
 install_rbenv

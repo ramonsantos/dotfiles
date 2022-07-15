@@ -1,4 +1,4 @@
-echo -e "\e[1;35m Configuring Docker... \e[0mww\n"
+echo -e "\e[1;35m Configuring Docker... \e[0m\n"
 
 sudo systemctl start --now docker
 sudo systemctl enable --now docker

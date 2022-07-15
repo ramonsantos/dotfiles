@@ -1,7 +1,7 @@
-echo -e "\e[1;35m Installing Elixir... \e[0mww\n"
+echo -e "\e[1;35m Installing Elixir... \e[0m\n"
 
-ERLANG_VERSION=23.2.1
-ELIXIR_VERSION=1.11.2-otp-23
+ERLANG_VERSION=24
+ELIXIR_VERSION=1.12-otp-24
 
 asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
 

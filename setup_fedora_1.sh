@@ -27,7 +27,7 @@ declare -a PACKAGES_TO_INSTALL=(
   "youtube-dl"
 
   # Internet Applications
-  "chromium"
+  "google-chrome-stable"
   "telegram-desktop"
   "transmission-gtk"
 
@@ -102,22 +102,23 @@ declare -a PACKAGES_TO_INSTALL=(
 )
 
 function add_repositories() {
-  echo -e "\e[1;35m Adding Repositories... \e[0mww\n"
+  echo -e "\e[1;35m Adding Repositories... \e[0m\n"
 
   sudo dnf install --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
   curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
   sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
   sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+  sudo dnf config-manager --set-enabled google-chrome
 }
 
 function update_repositories() {
-  echo -e "\e[1;35m Updating Repositories... \e[0mww\n"
+  echo -e "\e[1;35m Updating Repositories... \e[0m\n"
 
   sudo dnf makecache -y && sudo dnf check-update
 }
 
 function update_system() {
-  echo -e "\e[1;35m Updating System... \e[0mww\n"
+  echo -e "\e[1;35m Updating System... \e[0m\n"
 
   sudo dnf update -y
 }
@@ -127,7 +128,7 @@ function install_package_groups() {
 }
 
 function install_packages() {
-  echo -e "\e[1;35m Installing Packages... \e[0mww\n"
+  echo -e "\e[1;35m Installing Packages... \e[0m\n"
 
   INSTALL="sudo dnf install "
 
@@ -142,32 +143,32 @@ function install_packages() {
 }
 
 function config_kernel() {
-  echo -e "\e[1;35m Configuring Kernel... \e[0mww\n"
+  echo -e "\e[1;35m Configuring Kernel... \e[0m\n"
 
   sudo grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy=0" --make-default
 }
 
 function setup_snap() {
-  echo -e "\e[1;35m Configuring Snap... \e[0mww\n"
+  echo -e "\e[1;35m Configuring Snap... \e[0m\n"
 
   sudo ln -s /var/lib/snapd/snap /snap
 }
 
 function install_atom() {
-  echo -e "\e[1;35m Installing Atom... \e[0mww\n"
+  echo -e "\e[1;35m Installing Atom... \e[0m\n"
 
   wget https://atom.io/download/rpm -O atom.rpm
   sudo dnf localinstall atom.rpm -y
 }
 
 function config_language() {
-  echo -e "\e[1;35m Configuring Language... \e[0mww\n"
+  echo -e "\e[1;35m Configuring Language... \e[0m\n"
 
   sudo dnf install system-config-language -y
 }
 
 function install_postman() {
-  echo -e "\e[1;35m Installing Postman... \e[0mww\n"
+  echo -e "\e[1;35m Installing Postman... \e[0m\n"
 
   wget https://dl.pstmn.io/download/latest/linux64
   sudo mv linux64 /opt
@@ -192,13 +193,13 @@ EOT
 }
 
 function install_node_packages() {
-  echo -e "\e[1;35m Installing NodeJS Packages... \e[0mww\n"
+  echo -e "\e[1;35m Installing NodeJS Packages... \e[0m\n"
 
   sudo npm install --global webpack
 }
 
 function install_dropbox() {
-  echo -e "\e[1;35m Installing Dropbox... \e[0mww\n"
+  echo -e "\e[1;35m Installing Dropbox... \e[0m\n"
 
   wget $DROPBOX_DOWNLOAD_LINK
   sudo dnf localinstall *nautilus-dropbox*.rpm -y
