@@ -1,5 +1,12 @@
 echo -e "\e[1;35m Installing Elixir... \e[0m\n"
 
+# zsh
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+
+cp .iex.exs $HOME
+cp .tool-versions $HOME
+
 ERLANG_VERSION=24
 ELIXIR_VERSION=1.12-otp-24
 

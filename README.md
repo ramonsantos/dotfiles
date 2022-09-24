@@ -30,14 +30,6 @@ Run:
 ./install_ruby.sh
 ```
 
-### Install Elixir
-
-Run:
-
-```bash
-./install_elixir.sh
-```
-
 ### Reboot System
 
 Run:
@@ -60,4 +52,15 @@ Run:
 
 ```bash
 sudo ./config_docker.sh
+```
+
+
+## Optional
+
+### Install Elixir
+
+Run:
+
+```bash
+./install_elixir.sh
 ```
