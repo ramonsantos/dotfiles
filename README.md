@@ -57,18 +57,100 @@ sudo ./config_docker.sh
 
 ## Optional
 
-### Install Elixir
-
-Run:
+#### Elixir
 
 ```bash
 ./install_elixir.sh
 ```
 
-### Install Rubocop
-
-Run:
+#### Rubocop
 
 ```bash
 ./install_rubocop.sh
+```
+
+#### Audacity
+
+```bash
+sudo dnf install audacity
+```
+
+#### Soundconverter
+
+```bash
+sudo dnf install soundconverter
+```
+
+#### Easytag
+
+```bash
+sudo dnf install easytag
+```
+
+#### Tagtool
+
+```bash
+sudo dnf install tagtool
+```
+
+#### Simplescreenrecorder
+
+```bash
+sudo dnf install simplescreenrecorder
+```
+
+#### Youtube DL
+
+```bash
+sudo dnf install youtube-dl
+```
+
+#### Gimp
+
+```bash
+sudo dnf install gimp
+```
+
+#### Inkscape
+
+```bash
+sudo dnf install inkscape
+```
+
+#### Minas
+
+```bash
+sudo dnf install gnome-mines
+```
+
+#### Node
+
+```bash
+sudo dnf install nodejs npm
+```
+
+#### SQLite
+
+```bash
+sudo dnf install sqlite sqlite-devel sqlite-doc sqlitebrowser
+```
+
+#### Yarn
+
+```bash
+curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+sudo dnf install yarn
+```
+
+#### Webpack
+
+```bash
+sudo npm install --global webpack
+```
+
+#### Aton
+
+```bash
+wget https://atom.io/download/rpm -O atom.rpm
+sudo dnf localinstall atom.rpm -y
 ```
