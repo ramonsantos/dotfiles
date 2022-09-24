@@ -13,7 +13,6 @@ ZSH_CUSTOM=/home/$USER/.oh-my-zsh/custom
 cp .zshrc $HOME
 cp .gitconfig $HOME
 cp .pryrc $HOME
-cp .rubocop.yml $HOME
 
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 

@@ -64,3 +64,11 @@ Run:
 ```bash
 ./install_elixir.sh
 ```
+
+### Install Rubocop
+
+Run:
+
+```bash
+./install_rubocop.sh
+```

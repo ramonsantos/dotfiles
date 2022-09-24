@@ -1,15 +1,11 @@
 echo -e "\e[1;35m Installing Ruby... \e[0m\n"
 
-RUBY_VERSION=3.1.0
+RUBY_VERSION=3.1.2
 
 declare -a GEMS_TO_INSTALL=(
   "amazing_print"
   "bundler"
   "pry"
-  "rubocop"
-  "rubocop-performance"
-  "rubocop-rails"
-  "rubocop-rspec"
   "solargraph"
 )
 
