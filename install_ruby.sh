@@ -1,4 +1,4 @@
-echo -e "\e[1;35m Installing Ruby... \e[0m\n"
+echo -e "\e[1;35mInstalling Ruby... \e[0m\n"
 
 RUBY_VERSION=3.1.2
 

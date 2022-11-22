@@ -2,12 +2,20 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-## Install Basic Apps
+## Install Fedora Basic Apps
 
 Run step 1:
 
 ```bash
 sudo -E ./setup_fedora_1.sh
+```
+
+## Install CentOS Basic Apps
+
+Run step 1:
+
+```bash
+sudo -E ./setup_centos.sh.sh
 ```
 
 ### Setup Zsh
@@ -38,12 +46,12 @@ Run:
 reboot
 ```
 
-### Install Snap Packages
+### Install Flatpak Packages
 
 Run:
 
 ```bash
-./install_snap_packages.sh
+./install_flatpak_packages.sh
 ```
 
 ### Setup Docker
@@ -54,9 +62,21 @@ Run:
 sudo ./config_docker.sh
 ```
 
+### Install Docker (CentOS)
+
+Run:
+
+```bash
+sudo ./install_docker.sh.sh
+```
 
 ## Optional
 
+#### Nvidia driver by RPM Fusion
+
+```bash
+sudo dnf install akmod-nvidia
+```
 #### Elixir
 
 ```bash

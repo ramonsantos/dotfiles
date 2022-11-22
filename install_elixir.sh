@@ -1,4 +1,4 @@
-echo -e "\e[1;35m Installing Elixir... \e[0m\n"
+echo -e "\e[1;35mInstalling Elixir... \e[0m\n"
 
 # zsh
 . $HOME/.asdf/asdf.sh

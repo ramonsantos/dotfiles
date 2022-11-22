@@ -3,31 +3,18 @@ HOME=/home/ramonsantos
 
 declare -a PACKAGES_TO_INSTALL=(
   # System Utilities
-  "dconf-editor"
-  "gconf-editor"
   "gnome-tweak-tool"
   "p7zip"
   "unzip"
   "p7zip-plugins"
   "xclip"
   "util-linux-user"
-  "grubby"
   "dnf-plugins-core"
-  "bluez bluez-tools rfkill blueman"
-
-  # Multimedia Applications
-  "vlc"
-
-  # Internet Applications
-  "google-chrome-stable"
-  "telegram-desktop"
-  "transmission-gtk"
+  "ntfs-3g"
+  "epson-inkjet-printer-escpr"
 
   # Graphics and Office Applications
-  "libreoffice-langpack-pt-BR"
   "dia"
-  "pinta"
-  "calibre"
 
   # Development Utilities
   "ImageMagick"
@@ -36,12 +23,10 @@ declare -a PACKAGES_TO_INSTALL=(
   "zlib-devel"
   "libxslt"
   "libxslt-devel"
-  "fop"
   "gcc-c++"
   "patch"
   "readline"
   "readline-devel"
-  "libyaml-devel"
   "libffi-devel"
   "openssl-devel"
   "make"
@@ -51,32 +36,26 @@ declare -a PACKAGES_TO_INSTALL=(
   "libtool"
   "bison"
   "curl"
-  "unixODBC-devel"
   "redhat-rpm-config"
   "ncurses-devel"
   "systemtap"
   "diffstat"
   "doxygen"
   "patchutils"
-  "java-1.8.0-openjdk-devel"
   "wxGTK3-devel"
   "wxBase3"
   "libiodbc"
-  "unixODBC.x86_64"
-  "erlang-odbc.x86_64"
 
   # VS Code
   "code"
   # Git
-  "git-core gitg"
+  "git-core"
   # Vim
   "vim"
   # Redis
   "redis"
   # PostgreSQL
   "postgresql postgresql-devel"
-  # Docker
-  "docker docker-compose"
   # Zsh
   "zsh"
 )
@@ -84,26 +63,25 @@ declare -a PACKAGES_TO_INSTALL=(
 function add_repositories() {
   echo -e "\e[1;35mAdding Repositories... \e[0m\n"
 
-  sudo dnf install --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
+  sudo dnf install --nogpgcheck https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E %rhel).noarch.rpm
+  sudo dnf install --nogpgcheck https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$(rpm -E %rhel).noarch.rpm https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$(rpm -E %rhel).noarch.rpm -y
+
   sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
   sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
-  sudo dnf config-manager --set-enabled google-chrome
-}
 
-function update_repositories() {
-  echo -e "\e[1;35mUpdating Repositories... \e[0m\n"
+  sudo dnf install epel-release
 
-  sudo dnf makecache -y && sudo dnf check-update
+  sudo sh -c 'echo -e "[google-chrome]\nname=google-chrome\nbaseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64\nenabled=1\ngpgcheck=1\ngpgkey=https://dl.google.com/linux/linux_signing_key.pub" > /etc/yum.repos.d/google-chrome.repo'
 }
 
 function update_system() {
   echo -e "\e[1;35mUpdating System... \e[0m\n"
 
-  sudo dnf update -y
+  sudo dnf upgrade --refresh -y
 }
 
 function install_package_groups() {
-  sudo dnf groupinstall -y 'Development Tools' 'C Development Tools and Libraries'
+  sudo dnf groupinstall -y 'Development Tools' 'RPM Development Tools' 'Empacotador do Fedora'
 }
 
 function install_packages() {
@@ -125,12 +103,6 @@ function config_kernel() {
   echo -e "\e[1;35mConfiguring Kernel... \e[0m\n"
 
   sudo grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy=0" --make-default
-}
-
-function config_language() {
-  echo -e "\e[1;35mConfiguring Language... \e[0m\n"
-
-  sudo dnf install system-config-language -y
 }
 
 function install_postman() {
@@ -160,12 +132,8 @@ EOT
 
 # Main
 add_repositories
-update_repositories
 update_system
 install_package_groups
 install_packages
 config_kernel
-
-config_language
 install_postman
-

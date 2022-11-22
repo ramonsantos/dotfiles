@@ -1,4 +1,4 @@
-echo -e "\e[1;35m Configuring Zsh... \e[0m\n"
+echo -e "\e[1;35mConfiguring Zsh... \e[0m\n"
 
 ASDF_VERSION=v0.8.1
 
