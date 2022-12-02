@@ -51,7 +51,7 @@ reboot
 Run:
 
 ```bash
-./install_flatpak_packages.sh
+sudo ./install_flatpak_packages.sh
 ```
 
 ### Setup Docker
@@ -67,7 +67,7 @@ sudo ./config_docker.sh
 Run:
 
 ```bash
-sudo ./install_docker.sh.sh
+sudo ./install_docker.sh
 ```
 
 ## Optional
@@ -77,6 +77,32 @@ sudo ./install_docker.sh.sh
 ```bash
 sudo dnf install akmod-nvidia
 ```
+
+#### VirtualBox (CentOS)
+
+```bash
+sudo dnf config-manager --add-repo=https://download.virtualbox.org/virtualbox/rpm/el/virtualbox.repo
+sudo rpm --import https://www.virtualbox.org/download/oracle_vbox.asc
+sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm -y
+
+sudo dnf search virtualbox
+sudo dnf install VirtualBox-7.0 -y
+
+sudo usermod -aG vboxusers $USER
+newgrp vboxusers
+
+wget https://download.virtualbox.org/virtualbox/7.0.2/Oracle_VM_VirtualBox_Extension_Pack-7.0.2.vbox-extpack
+sudo /sbin/vboxconfig
+sudo VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-7.0.2.vbox-extpack
+```
+
+#### Vagrant (CentOS)
+
+```bash
+ sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+ sudo yum -y install vagrant
+```
+
 #### Elixir
 
 ```bash
