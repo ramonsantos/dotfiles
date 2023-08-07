@@ -1,0 +1,6 @@
+echo -e "\e[1;35mInstalling Snap Packages... \e[0m\n"
+
+sudo snap install spotify
+sudo snap install telegram-desktop
+sudo snap install pinta
+sudo snap install dbeaver-ce

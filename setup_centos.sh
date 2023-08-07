@@ -13,6 +13,8 @@ declare -a PACKAGES_TO_INSTALL=(
   "ntfs-3g"
   "epson-inkjet-printer-escpr"
   "vlc"
+  "transmission-gtk"
+  "google-chrome-stable"
 
   # Graphics and Office Applications
   "dia"
@@ -61,6 +63,8 @@ declare -a PACKAGES_TO_INSTALL=(
   "postgresql postgresql-devel"
   # Zsh
   "zsh"
+  # Java
+  "java-11-openjdk-devel"
 )
 
 function add_repositories() {

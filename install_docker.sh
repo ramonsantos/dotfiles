@@ -8,10 +8,10 @@ sudo dnf --enablerepo=docker-ce-stable -y install docker-ce
 
 sudo systemctl start --now docker
 sudo systemctl enable --now docker
-sudo usermod -aG docker $USER
+sudo usermod -aG docker ramonsantos
 newgrp docker
 sudo systemctl restart docker
 
 # Docker compose
-sudo curl -L "https://github.com/docker/compose/releases/download/v2.12.2/docker-compose-linux-x86_64" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.20.2/docker-compose-linux-x86_64" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose

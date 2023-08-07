@@ -1,12 +1,11 @@
 echo -e "\e[1;35mInstalling Ruby... \e[0m\n"
 
-RUBY_VERSION=3.1.2
+RUBY_VERSION=3.2.2
 
 declare -a GEMS_TO_INSTALL=(
   "amazing_print"
   "bundler"
   "pry"
-  "solargraph"
 )
 
 function install_rbenv() {
