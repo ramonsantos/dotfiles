@@ -6,3 +6,5 @@ sudo snap install pinta
 sudo snap install dbeaver-ce
 sudo snap install libreoffice
 sudo snap install gnome-clocks
+sudo snap install fbreader
+
