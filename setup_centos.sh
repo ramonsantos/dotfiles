@@ -50,6 +50,10 @@ declare -a PACKAGES_TO_INSTALL=(
   "libiodbc"
   "perl"
   "dkms"
+  "libyaml-devel"
+
+  # Rust
+  "rust"
 
   # VS Code
   "code"
@@ -65,6 +69,8 @@ declare -a PACKAGES_TO_INSTALL=(
   "zsh"
   # Java
   "java-11-openjdk-devel"
+  # Snap
+  "snapd"
 )
 
 function add_repositories() {
@@ -93,6 +99,8 @@ function install_package_groups() {
 
 function install_packages() {
   echo -e "\e[1;35mInstalling Packages... \e[0m\n"
+
+  sudo dnf config-manager --set-enabled crb
 
   INSTALL="sudo dnf install "
 
@@ -137,6 +145,13 @@ Categories=Development;Utilities;
 EOT
 }
 
+function install_snap() {
+  echo -e "\e[1;35mInstalling Snap... \e[0m\n"
+  sudo systemctl enable --now snapd.socket
+  sudo ln -s /var/lib/snapd/snap /snap
+}
+
+
 # Main
 add_repositories
 update_system
@@ -144,3 +159,4 @@ install_package_groups
 install_packages
 config_kernel
 install_postman
+install_snap

@@ -1,10 +1,3 @@
 echo -e "\e[1;35mInstalling Snap Packages... \e[0m\n"
 
-sudo snap install spotify
-sudo snap install telegram-desktop
-sudo snap install pinta
-sudo snap install dbeaver-ce
-sudo snap install libreoffice
-sudo snap install gnome-clocks
-sudo snap install fbreader
-
+sudo snap install spotify telegram-desktop pinta dbeaver-ce libreoffice gnome-clocks fbreader dbeaver-ce libreoffice gnome-clocks fbreader

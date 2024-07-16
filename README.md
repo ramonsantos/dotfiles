@@ -15,7 +15,7 @@ sudo -E ./setup_fedora_1.sh
 Run step 1:
 
 ```bash
-sudo -E ./setup_centos.sh.sh
+sudo -E ./setup_centos.sh
 ```
 
 ### Setup Zsh
@@ -51,15 +51,8 @@ reboot
 Run:
 
 ```bash
+# Habilitar Flathub
 sudo ./install_flatpak_packages.sh
-```
-
-### Setup Docker
-
-Run:
-
-```bash
-sudo ./config_docker.sh
 ```
 
 ### Install Docker (CentOS)
