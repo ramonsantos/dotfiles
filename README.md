@@ -63,6 +63,14 @@ Run:
 sudo ./install_docker.sh
 ```
 
+### Install Snap Packages
+
+Run:
+
+```bash
+sudo ./install_snap_packages.sh
+```
+
 ## Optional
 
 #### Nvidia driver by RPM Fusion
@@ -185,11 +193,4 @@ sudo dnf install yarn
 
 ```bash
 sudo npm install --global webpack
-```
-
-#### Aton
-
-```bash
-wget https://atom.io/download/rpm -O atom.rpm
-sudo dnf localinstall atom.rpm -y
 ```

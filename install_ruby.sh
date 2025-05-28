@@ -1,6 +1,6 @@
 echo -e "\e[1;35mInstalling Ruby... \e[0m\n"
 
-RUBY_VERSION=3.3.3
+RUBY_VERSION=3.4.3
 
 declare -a GEMS_TO_INSTALL=(
   "amazing_print"
