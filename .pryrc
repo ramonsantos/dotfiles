@@ -12,3 +12,7 @@ if defined?(PryByebug)
 end
 
 AmazingPrint.pry!
+
+def file(content)
+  File.write("/home/ramonsantos/temp_#{Time.now.to_i}", content)
+end

@@ -8,6 +8,7 @@ declare -a PACKAGES_TO_INSTALL=(
   "unzip"
   "p7zip-plugins"
   "xclip"
+  "gparted"
   "util-linux-user"
   "dnf-plugins-core"
   "ntfs-3g"
