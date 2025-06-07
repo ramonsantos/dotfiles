@@ -21,6 +21,7 @@ plugins=(
 # Aliases
 alias dnfu="sudo dnf update"
 alias calibre="export QT_XCB_GL_INTEGRATION=none && flatpak run com.calibre_ebook.calibre"
+alias k="kubectl"
 
 # Configurations
 HIST_STAMPS="yyyy-mm-dd"

@@ -52,6 +52,7 @@ declare -a PACKAGES_TO_INSTALL=(
   "perl"
   "dkms"
   "libyaml-devel"
+  "gdbm-devel"
 
   # Rust
   "rust"
@@ -72,6 +73,10 @@ declare -a PACKAGES_TO_INSTALL=(
   "java-11-openjdk-devel"
   # Snap
   "snapd"
+  # Terminator
+  "terminator"
+  # Go lang
+  "golang"
 )
 
 function add_repositories() {
