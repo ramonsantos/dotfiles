@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'amazing_print'
+require 'json'
 
 if defined?(PryByebug)
   Pry.commands.alias_command 'c', 'continue'
