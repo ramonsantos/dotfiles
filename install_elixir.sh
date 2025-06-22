@@ -7,8 +7,8 @@ echo -e "\e[1;35mInstalling Elixir... \e[0m\n"
 cp .iex.exs $HOME
 cp .tool-versions $HOME
 
-ERLANG_VERSION=24
-ELIXIR_VERSION=1.12-otp-24
+ERLANG_VERSION=28.0.1
+ELIXIR_VERSION=1.18.4-otp-28
 
 asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
 
