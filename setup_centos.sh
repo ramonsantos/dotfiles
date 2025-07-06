@@ -13,6 +13,7 @@ declare -a PACKAGES_TO_INSTALL=(
   "dnf-plugins-core"
   "ntfs-3g"
   "epson-inkjet-printer-escpr"
+  "ffmpeg ffmpeg-devel"
   "vlc"
   "transmission-gtk"
   "google-chrome-stable"
