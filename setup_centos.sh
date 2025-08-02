@@ -14,7 +14,6 @@ declare -a PACKAGES_TO_INSTALL=(
   "ntfs-3g"
   "epson-inkjet-printer-escpr"
   "ffmpeg ffmpeg-devel"
-  "vlc"
   "transmission-gtk"
   "google-chrome-stable"
 
@@ -71,7 +70,7 @@ declare -a PACKAGES_TO_INSTALL=(
   # Zsh
   "zsh"
   # Java
-  "java-11-openjdk-devel"
+  "java-21-openjdk-devel"
   # Snap
   "snapd"
   # Terminator
@@ -83,7 +82,7 @@ declare -a PACKAGES_TO_INSTALL=(
 function add_repositories() {
   echo -e "\e[1;35mAdding Repositories... \e[0m\n"
 
-  sudo dnf install --nogpgcheck https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E %rhel).noarch.rpm
+  sudo dnf install --nogpgcheck https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E %rhel).noarch.rpm -y
   sudo dnf install --nogpgcheck https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$(rpm -E %rhel).noarch.rpm https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$(rpm -E %rhel).noarch.rpm -y
 
   sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc

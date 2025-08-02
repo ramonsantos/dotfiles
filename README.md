@@ -87,7 +87,7 @@ sudo rpm --import https://www.virtualbox.org/download/oracle_vbox.asc
 sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm -y
 
 sudo dnf search virtualbox
-sudo dnf install VirtualBox-7.0 -y
+sudo dnf install VirtualBox-7.1 -y
 
 sudo usermod -aG vboxusers $USER
 newgrp vboxusers
