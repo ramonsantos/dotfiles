@@ -3,40 +3,33 @@ HOME=/home/ramonsantos
 
 declare -a PACKAGES_TO_INSTALL=(
   # System Utilities
-  "dconf-editor"
-  "gconf-editor"
   "gnome-tweak-tool"
   "p7zip"
   "unzip"
   "p7zip-plugins"
-  "xclip"
   "util-linux-user"
-  "grubby"
   "dnf-plugins-core"
-  "bluez bluez-tools rfkill blueman"
+  "ntfs-3g"
+
+  # Internet Applications
+  "google-chrome-stable"
+  "transmission-gtk"
 
   # Multimedia Applications
   "vlc"
 
-  # Internet Applications
-  "google-chrome-stable"
-  "telegram-desktop"
-  "transmission-gtk"
-
   # Graphics and Office Applications
   "libreoffice-langpack-pt-BR"
   "dia"
-  "pinta"
-  "calibre"
+  "gnome-terminal"
+
 
   # Development Utilities
-  "ImageMagick"
-  "graphviz"
+  "curl"
+
+  # Ruby e rbenv
   "zlib"
   "zlib-devel"
-  "libxslt"
-  "libxslt-devel"
-  "fop"
   "gcc-c++"
   "patch"
   "readline"
@@ -50,44 +43,65 @@ declare -a PACKAGES_TO_INSTALL=(
   "automake"
   "libtool"
   "bison"
-  "curl"
-  "unixODBC-devel"
-  "redhat-rpm-config"
-  "ncurses-devel"
-  "systemtap"
-  "diffstat"
-  "doxygen"
-  "patchutils"
-  "java-1.8.0-openjdk-devel"
-  "wxGTK3-devel"
-  "wxBase3"
-  "libiodbc"
-  "unixODBC.x86_64"
-  "erlang-odbc.x86_64"
+  "libcurl-devel"
+  "sqlite-devel"
+  "perl-FindBin"
+  "perl-lib"
+  "perl-File-Compare"
+  "ImageMagick"
+  "graphviz"
+  "libxslt"
+  "libxslt-devel"
+  "fop"
 
+
+  # Blueamn
+  # "bluez bluez-tools rfkill blueman"
   # VS Code
   "code"
   # Git
-  "git-core gitg"
+  "git-core"
   # Vim
   "vim"
   # Redis
-  "redis"
+  # "redis"
+  # Java
+  "java-openjdk"
   # PostgreSQL
   "postgresql postgresql-devel"
   # Docker
-  "docker docker-compose"
+  # "docker docker-compose"
+  # Snap
+  "snapd"
   # Zsh
   "zsh"
+  # --------------------------------------------------
+
+
+  # "unixODBC-devel"
+  # "redhat-rpm-config"
+  # "ncurses-devel"
+  # "systemtap"
+  # "diffstat"
+  # "doxygen"
+  # "patchutils"
+  # "wxGTK3-devel"
+  # "wxBase3"
+  # "libiodbc"
+  # "unixODBC.x86_64"
+  # "erlang-odbc.x86_64"
 )
 
 function add_repositories() {
   echo -e "\e[1;35mAdding Repositories... \e[0m\n"
 
   sudo dnf install --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
+
   sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-  sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
-  sudo dnf config-manager --set-enabled google-chrome
+  echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages  .microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
+
+
+  # sudo dnf config-manager --set-enabled google-chrome
 }
 
 function update_repositories() {
@@ -103,7 +117,7 @@ function update_system() {
 }
 
 function install_package_groups() {
-  sudo dnf groupinstall -y 'Development Tools' 'C Development Tools and Libraries'
+  sudo dnf group install -y development-tools c-development rpm-development-tools
 }
 
 function install_packages() {
@@ -158,6 +172,13 @@ Categories=Development;Utilities;
 EOT
 }
 
+function install_snap() {
+  echo -e "\e[1;35mInstalling Snap... \e[0m\n"
+  sudo systemctl enable --now snapd.socket
+  sudo ln -s /var/lib/snapd/snap /snap
+}
+
+
 # Main
 add_repositories
 update_repositories
@@ -168,4 +189,4 @@ config_kernel
 
 config_language
 install_postman
-
+install_snap
