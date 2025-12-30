@@ -16,6 +16,7 @@ declare -a PACKAGES_TO_INSTALL=(
   "ffmpeg ffmpeg-devel"
   "transmission-gtk"
   "google-chrome-stable"
+  "telegram-desktop"
 
   # Graphics and Office Applications
   "dia"
@@ -55,6 +56,9 @@ declare -a PACKAGES_TO_INSTALL=(
   "libyaml-devel"
   "gdbm-devel"
 
+  # Sublime
+  "sublime-text"
+
   # Rust
   "rust"
 
@@ -90,8 +94,11 @@ function add_repositories() {
   sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 
   sudo dnf install epel-release -y
+  sudo dnf install epel-next-release -y
 
   sudo sh -c 'echo -e "[google-chrome]\nname=google-chrome\nbaseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64\nenabled=1\ngpgcheck=1\ngpgkey=https://dl.google.com/linux/linux_signing_key.pub" > /etc/yum.repos.d/google-chrome.repo'
+
+  sudo dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
 }
 
 function update_system() {
