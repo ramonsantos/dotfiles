@@ -20,8 +20,8 @@ plugins=(
 
 # Aliases
 alias dnfu="sudo dnf update"
-alias calibre="export QT_XCB_GL_INTEGRATION=none && flatpak run com.calibre_ebook.calibre"
 alias k="kubectl"
+alias mkf='mkfile() { mkdir -p "$(dirname "$1")" && touch "$1"; }; mkfile'
 
 # Configurations
 HIST_STAMPS="yyyy-mm-dd"
@@ -34,14 +34,3 @@ source $ZSH/oh-my-zsh.sh
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
-
-# GO lang
-export GOPATH=$HOME/services/go-lang
-
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Latex
-export PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH

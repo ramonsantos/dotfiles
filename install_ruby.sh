@@ -1,6 +1,6 @@
 echo -e "\e[1;35mInstalling Ruby... \e[0m\n"
 
-RUBY_VERSION=3.4.6
+RUBY_VERSION=4.0.2
 
 function install_rbenv() {
   git clone https://github.com/rbenv/rbenv.git ~/.rbenv
