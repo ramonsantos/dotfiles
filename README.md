@@ -107,12 +107,6 @@ sudo VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-7.0.2.vbox-e
 ./install_elixir.sh
 ```
 
-#### Rubocop
-
-```bash
-./install_rubocop.sh
-```
-
 #### Audacity
 
 ```bash
