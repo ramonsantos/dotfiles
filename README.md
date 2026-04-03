@@ -32,7 +32,7 @@ zsh
 ### Install Ruby
 
 ```bash
-./install_ruby.sh
+./development_tools/install_ruby.sh
 ```
 
 ### Reboot System
@@ -51,7 +51,7 @@ sudo ./install_flatpak_packages.sh
 
 
 ```bash
-sudo ./install_docker.sh
+sudo ./development_tools/install_docker.sh
 ```
 
 ### Install Snap Packages
@@ -104,7 +104,7 @@ sudo VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-7.0.2.vbox-e
 #### Elixir
 
 ```bash
-./install_elixir.sh
+./development_tools/install_elixir.sh
 ```
 
 #### Audacity
