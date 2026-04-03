@@ -43,8 +43,14 @@ reboot
 
 ### Install Flatpak Packages
 
+##### Fedora
 ```bash
-sudo ./install_flatpak_packages.sh
+sudo ./fedora/install_flatpak_packages.sh
+```
+
+##### Centos 9
+```bash
+sudo ./centos9/install_flatpak_packages.sh
 ```
 
 ### Install Docker (CentOS)
