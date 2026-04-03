@@ -138,7 +138,9 @@ function install_packages() {
 function config_kernel() {
   echo -e "\e[1;35mConfiguring Kernel... \e[0m\n"
 
+
   sudo grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy=0" --make-default
+
 }
 
 function config_language() {

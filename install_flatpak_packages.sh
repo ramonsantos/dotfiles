@@ -5,4 +5,3 @@ sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flat
 flatpak install flathub com.dropbox.Client -y
 flatpak install flathub org.gnome.Extensions -y
 flatpak install flathub com.calibre_ebook.calibre -y
-flatpak install pinta -y

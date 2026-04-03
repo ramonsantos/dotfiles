@@ -2,25 +2,24 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-## Install Fedora Basic Apps
+## Basic Instalation
 
-Run step 1:
+## Main apps
+
+##### Fedora
 
 ```bash
-sudo -E ./setup_fedora_1.sh
+sudo -E ./fedora/setup_fedora.sh
 ```
 
-## Install CentOS Basic Apps
-
-Run step 1:
+##### Centos 9
 
 ```bash
-sudo -E ./setup_centos.sh
+sudo -E ./centos9/setup_centos.sh
 ```
 
 ### Setup Zsh
 
-Run:
 
 ```bash
 ./config_zsh.sh
@@ -32,15 +31,11 @@ zsh
 
 ### Install Ruby
 
-Run:
-
 ```bash
 ./install_ruby.sh
 ```
 
 ### Reboot System
-
-Run:
 
 ```bash
 reboot
@@ -48,16 +43,12 @@ reboot
 
 ### Install Flatpak Packages
 
-Run:
-
 ```bash
-# Habilitar Flathub
 sudo ./install_flatpak_packages.sh
 ```
 
 ### Install Docker (CentOS)
 
-Run:
 
 ```bash
 sudo ./install_docker.sh
@@ -65,10 +56,16 @@ sudo ./install_docker.sh
 
 ### Install Snap Packages
 
-Run:
+##### Fedora
 
 ```bash
-sudo ./install_snap_packages.sh
+sudo ./fedora/install_snap_packages.sh
+```
+
+##### Centos 9
+
+```bash
+sudo ./centos9/install_snap_packages.sh
 ```
 
 ## Optional
