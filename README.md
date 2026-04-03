@@ -7,13 +7,11 @@
 ## Main apps
 
 ##### Fedora
-
 ```bash
 sudo -E ./fedora/setup_fedora.sh
 ```
 
 ##### Centos 9
-
 ```bash
 sudo -E ./centos9/setup_centos.sh
 ```
@@ -55,21 +53,24 @@ sudo ./centos9/install_flatpak_packages.sh
 
 ### Install Docker (CentOS)
 
-
+##### Fedora
 ```bash
-sudo ./development_tools/install_docker.sh
+sudo ./fedora/install_docker.sh
+```
+
+##### Centos 9
+```bash
+sudo ./centos9/install_docker.sh
 ```
 
 ### Install Snap Packages
 
 ##### Fedora
-
 ```bash
 sudo ./fedora/install_snap_packages.sh
 ```
 
 ##### Centos 9
-
 ```bash
 sudo ./centos9/install_snap_packages.sh
 ```
