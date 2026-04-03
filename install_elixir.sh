@@ -4,8 +4,8 @@ echo -e "\e[1;35mInstalling Elixir... \e[0m\n"
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
-cp .iex.exs $HOME
-cp .tool-versions $HOME
+cp home_dotfiles/.iex.exs $HOME
+cp home_dotfiles/.tool-versions $HOME
 
 ERLANG_VERSION=28.0.1
 ELIXIR_VERSION=1.18.4-otp-28
