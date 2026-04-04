@@ -12,7 +12,6 @@ declare -a PACKAGES_TO_INSTALL=(
   "ntfs-3g"
 
   # Internet Applications
-  # "google-chrome-stable"
   "transmission-gtk"
 
   # Multimedia Applications
@@ -22,7 +21,6 @@ declare -a PACKAGES_TO_INSTALL=(
   "libreoffice-langpack-pt-BR"
   "dia"
   "gnome-terminal"
-
 
   # Development Utilities
   "curl"
@@ -54,42 +52,20 @@ declare -a PACKAGES_TO_INSTALL=(
   "libxslt-devel"
   "fop"
 
-
-  # Blueamn
-  # "bluez bluez-tools rfkill blueman"
   # VS Code
   "code"
   # Git
   "git-core"
   # Vim
   "vim"
-  # Redis
-  # "redis"
   # Java
   "java-openjdk"
   # PostgreSQL
   "postgresql postgresql-devel"
-  # Docker
-  # "docker docker-compose"
   # Snap
   "snapd"
   # Zsh
   "zsh"
-  # --------------------------------------------------
-
-
-  # "unixODBC-devel"
-  # "redhat-rpm-config"
-  # "ncurses-devel"
-  # "systemtap"
-  # "diffstat"
-  # "doxygen"
-  # "patchutils"
-  # "wxGTK3-devel"
-  # "wxBase3"
-  # "libiodbc"
-  # "unixODBC.x86_64"
-  # "erlang-odbc.x86_64"
 )
 
 function add_repositories() {
@@ -99,9 +75,6 @@ function add_repositories() {
 
   sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
   echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
-
-
-  # sudo dnf config-manager --set-enabled google-chrome
 }
 
 function update_repositories() {
@@ -133,20 +106,6 @@ function install_packages() {
   INSTALL="${INSTALL} -y"
 
   $INSTALL
-}
-
-function config_kernel() {
-  echo -e "\e[1;35mConfiguring Kernel... \e[0m\n"
-
-
-  sudo grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy=0" --make-default
-
-}
-
-function config_language() {
-  echo -e "\e[1;35mConfiguring Language... \e[0m\n"
-
-  sudo dnf install system-config-language -y
 }
 
 function install_postman() {
@@ -187,8 +146,5 @@ update_repositories
 update_system
 install_package_groups
 install_packages
-config_kernel
-
-config_language
 install_postman
 install_snap
